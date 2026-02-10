@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be Mine 💖</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(#ffd6e0,#c8f4ff);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+.card{
+  background:white;
+  padding:25px;
+  border-radius:30px;
+  text-align:center;
+  width:90%;
+  max-width:360px;
+}
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:40px;
+  background:#ff4d6d;
+  color:white;
+  font-size:17px;
+  margin-top:15px;
+}
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation: float 4s linear infinite;
+}
+@keyframes float{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h2>Meri pyaari Suppi baby 😌💖</h2>
+  <p>
+    After everything…  
+    bas me tumse ek chij puchna chahta hun.
+  </p>
+  <h3>Will you be my Valentine? 🌹</h3>
+
+  <button onclick="accept()">YES (always) 💕</button>
+</div>
+
+<script>
+function accept(){
+  if(navigator.vibrate){ navigator.vibrate(100); }
+  document.getElementById("card").innerHTML = `
+    <h2>APPROVED 💖🎉</h2>
+    <p>
+      Official confirmation 📢<br><br>
+      Meri pyaari Suppi baby is now<br>
+      <strong>my Valentine ❤️</strong><br><br>
+      Distance can’t change this.<br>
+      My heart stays with you 😘
+    </p>
+    <h3>Happy Valentine’s Day 💕</h3>
+  `;
+  hearts();
+}
+
+function hearts(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💗";
+    h.style.left=Math.random()*100+"vw";
+    h.style.bottom="0";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  },250);
+}
+</script>
+
+</body>
+</html>
