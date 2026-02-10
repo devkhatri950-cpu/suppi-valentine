@@ -1,180 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Suppi 💖</title>
+<title>Only Suppi 💖</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(180deg, #ffd6e0, #c8f4ff);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+body{
+  font-family: Arial;
+  background: linear-gradient(#ffd6e0,#c8f4ff);
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
-.card {
-    background: white;
-    padding: 28px 22px;
-    border-radius: 30px;
-    text-align: center;
-    width: 92%;
-    max-width: 360px;
-    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+.box{
+  background:white;
+  padding:25px;
+  border-radius:25px;
+  text-align:center;
+  width:90%;
+  max-width:360px;
 }
-
-h1 {
-    color: #ff3b6f;
-    font-size: 24px;
+input{
+  width:100%;
+  padding:12px;
+  border-radius:25px;
+  border:1px solid #ccc;
+  margin-top:10px;
+  text-align:center;
 }
-
-h2 {
-    color: #ff4d6d;
-    font-size: 20px;
+button{
+  margin-top:15px;
+  padding:14px;
+  width:100%;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
 }
-
-p {
-    color: #444;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 40px;
-    font-size: 17px;
-    cursor: pointer;
-    margin-top: 12px;
-}
-
-.yes {
-    background: #ff4d6d;
-    color: white;
-}
-
-.fake {
-    background: #ffe1e8;
-}
-
-.shake {
-    animation: shake 0.35s;
-}
-
-@keyframes shake {
-    0% {transform: translateX(0);}
-    25% {transform: translateX(-6px);}
-    50% {transform: translateX(6px);}
-    75% {transform: translateX(-6px);}
-    100% {transform: translateX(0);}
-}
-
-.loading {
-    font-size: 16px;
-    color: #ff4d6d;
-}
-
-.heart {
-    position: fixed;
-    font-size: 22px;
-    animation: float 4s linear infinite;
-}
-
-@keyframes float {
-    from {transform: translateY(0); opacity:1;}
-    to {transform: translateY(-100vh); opacity:0;}
+#error{
+  color:red;
+  font-size:14px;
+  margin-top:8px;
 }
 </style>
 </head>
 
 <body>
-
-<div class="card" id="card">
-    <h1>Meri pyaari Suppi baby 😌💖</h1>
-    <p id="text">
-        itne saare option dene se acha…<br>
-        aap yahi ek option choose karo meri baby 🤭
-    </p>
-
-    <h2>Will you be my Valentine? 🌹</h2>
-
-    <button class="yes" onclick="accept()">YES (only correct answer) 💕</button>
-    <button class="fake" onclick="tease()">No (system error 🙈)</button>
-    <button class="fake" onclick="tease()">Let me think 🤔</button>
+<div class="box">
+  <h2>🔐 Private Access</h2>
+  <p>Only <strong>meri pyaari Suppi baby</strong> can enter 😌💖</p>
+  <input type="password" id="pass" placeholder="Enter secret word">
+  <button onclick="check()">Unlock 💕</button>
+  <div id="error"></div>
 </div>
 
 <script>
-let tap = 0;
+function check(){
+  const password = "merisuppisabsecutie"; // CHANGE PASSWORD HERE
+  const input = document.getElementById("pass").value;
 
-function vibrate() {
-    if (navigator.vibrate) {
-        navigator.vibrate(80);
-    }
-}
-
-function tease() {
-    vibrate();
-    tap++;
-    const card = document.getElementById("card");
-    card.classList.add("shake");
-    setTimeout(() => card.classList.remove("shake"), 350);
-
-    const lines = [
-        "Nice try 😏",
-        "Suppi baby, don’t act smart 🤭",
-        "My heart just said NO to your NO 💖",
-        "You’re smiling… I know it 😌",
-        "Okay stop teasing and press YES 🙈💕"
-    ];
-
-    document.getElementById("text").innerText =
-        lines[Math.min(tap - 1, lines.length - 1)];
-}
-
-function accept() {
-    vibrate();
-    document.getElementById("card").innerHTML = `
-        <h1>Processing… ⏳</h1>
-        <p class="loading">
-            Calculating feelings…<br>
-            Checking heart compatibility… 💗<br>
-            Finalizing decision…
-        </p>
-    `;
-
-    setTimeout(showResult, 2200);
-}
-
-function showResult() {
-    document.getElementById("card").innerHTML = `
-        <h1>APPROVED 💖🎉</h1>
-        <p>
-            Official confirmation 📢<br><br>
-            Meri pyaari Suppi baby is now<br>
-            <strong>my Valentine ❤️</strong><br><br>
-            Distance can’t compete with us —  
-            my heart lives with you 😘
-        </p>
-        <h2>Happy Valentine’s Day 💕</h2>
-    `;
-    hearts();
-}
-
-function hearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "💗";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.bottom = "0px";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-    }, 220);
+  if(input === password){
+    location.href = "memories.html";
+  } else {
+    document.getElementById("error").innerText =
+      "Wrong password 🙈 Only Suppi knows this 😏";
+    if(navigator.vibrate){ navigator.vibrate(120); }
+  }
 }
 </script>
 
