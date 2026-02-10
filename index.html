@@ -58,14 +58,14 @@ button{
 
 <script>
 function check(){
-  const password = "merisuppisabsecutie"; // CHANGE PASSWORD HERE
+  const password = "ilydev"; // CHANGE PASSWORD HERE
   const input = document.getElementById("pass").value;
 
   if(input === password){
     location.href = "memories.html";
   } else {
     document.getElementById("error").innerText =
-      "Wrong password 🙈 Only Suppi knows this 😏";
+      "Wrong password 🙈 suppi ko hi pata hai bas pasword 😏";
     if(navigator.vibrate){ navigator.vibrate(120); }
   }
 }
